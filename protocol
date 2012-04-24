@@ -1,0 +1,49 @@
+get plesk_client_id
+/usr/local/expand/sbin/exp_plesk_multi_client <<EOF
+<?xml version="1.0"?>
+<packet version="2.2.0.2">
+  <instance>
+    <get>
+      <filter>
+        <client_id>20</client_id>
+      </filter>
+    </get>
+  </instance>
+</packet>
+EOF
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<packet action_id="828649" version="2.3.2.10">
+  <instance>
+    <get>
+      <result>
+        <status>ok</status>
+        <client_id>20</client_id>
+        <data>
+          <plesk_client_id>76</plesk_client_id>
+          <plesk_client_id>92</plesk_client_id>
+          <plesk_client_id>97</plesk_client_id>
+        </data>
+      </result>
+    </get>
+  </instance>
+</packet>
+
+
+
+get_domains
+/usr/local/expand/sbin/exp_plesk_domain <<EOF
+<?xml version="1.0"?>
+<packet version="2.2.0.2">
+  <get>
+    <filter>
+      <client_id>76</client_id>
+      <client_id>92</client_id>
+      <client_id>97</client_id>
+    </filter>
+    <dataset>
+      <gen_info/>
+    </dataset>
+  </get>
+</packet>
+EOF
